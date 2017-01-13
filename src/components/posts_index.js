@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; // to make Container from Component
+import { connect } from 'react-redux'; // to make Container from Component. Container can call action creators.
 import {fetchPosts} from '../actions/index';
 
 // Class based Component (Container)
@@ -8,6 +8,7 @@ class  PostsIndex extends  Component {
    // whenever component is about to be rendered for the first time
    componentWillMount() {
       console.log("time to call action creator to fetch posts");
+      // action creator call
       this.props.fetchPosts();
    }
 
