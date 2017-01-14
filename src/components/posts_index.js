@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; // to make Container from Component. Container can call action creators.
 import {fetchPosts} from '../actions/index';
+import { Link } from 'react-router';
 
 // Class based Component (Container)
 class  PostsIndex extends  Component {
@@ -16,6 +17,9 @@ class  PostsIndex extends  Component {
       return (
          <div>
             List of posts
+            <Link to="posts/new" className="ui right floated grey basic button">
+               New Post
+            </Link>
          </div>
       )
    }
