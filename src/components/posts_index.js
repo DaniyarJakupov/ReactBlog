@@ -15,11 +15,13 @@ class  PostsIndex extends  Component {
 
    render(){
       return (
-         <div>
-            List of posts
-            <Link to="posts/new" className="ui right floated grey basic button">
-               New Post
-            </Link>
+         <div  className="ui main text container">
+            <div className="ui header">
+               All Posts
+               <Link to="posts/new" className="ui right floated grey basic button">
+                  New Post
+               </Link>
+            </div>
          </div>
       )
    }
