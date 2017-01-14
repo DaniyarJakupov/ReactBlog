@@ -1,9 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { createPost } from '../actions/index';
 
 class PostNew extends Component {
+   static contextTypes = {
+      router: PropTypes.object
+   };
+
+   onSubmit(props){
+      //props is properties from the form, i.e. title, categories, content
+      this.props.createPost(props)
+         .then(() => {
+            // blog post has been created, navigate user to the index page
+            // navigate by calling this.context.router.push with the new path
+            // to navigate to
+            this.context.router.push('/');
+         });
+   };
+
    render(){
       const {fields: { title, categories, content }, handleSubmit } = this.props; // ES6 syntax for handleSubmit = this.props.handleSubmit
       return (
@@ -11,8 +26,7 @@ class PostNew extends Component {
             <div className="ui header large">
                Create A New Post
             </div>
-            <form onSubmit={handleSubmit(this.props.createPost)} className="ui form">
-
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="ui form">
                <div className={`field ${title.touched && title.invalid ? 'ui red message' : ''}`}>
                   <label htmlFor="title">Title</label>
                   <input name="title" type="text" {...title}/>
@@ -49,10 +63,14 @@ class PostNew extends Component {
 
 function validate(values){
    const errors = {};
-   if(!values.title || !values.content || !values.categories){
+   if(!values.title){
       errors.title = 'Enter title, please';
+   }
+   if(!values.categories){
       errors.categories = 'Enter category, please';
-      errors.content = 'Enter text, please';
+   }
+   if(!values.content){
+         errors.content = 'Enter text, please';
    }
    return errors;
 }
