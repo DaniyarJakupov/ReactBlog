@@ -2,6 +2,7 @@ import axios from 'axios'; // library for ajax request
 
 export const FETCH_POSTS =  "FETCH_POSTS";
 export const CREATE_POST = "CREATE_POST";
+export const FETCH_POST = "FETCH_POST";
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = "?key=heroofages";
@@ -24,6 +25,15 @@ export function createPost(props){
    const request = axios.post(url, props);
    return {
       type: CREATE_POST,
+      payload: request
+   }
+}
+
+export function fetchPost(id){
+   const url = `${ROOT_URL}/posts/${id}${API_KEY}`;
+   const request = axios.get(url); // returns promise
+   return {
+      type: FETCH_POST,
       payload: request
    }
 }
