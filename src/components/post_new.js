@@ -16,11 +16,12 @@ class PostNew extends Component {
             // navigate by calling this.context.router.push with the new path
             // to navigate to
             this.context.router.push('/');
+            //console.log(props);
          });
    };
 
    render(){
-      const {fields: { title, categories, content }, handleSubmit } = this.props; // ES6 syntax for handleSubmit = this.props.handleSubmit
+      const {fields: { title, content, categories, image }, handleSubmit } = this.props; // ES6 syntax for handleSubmit = this.props.handleSubmit
       return (
          <div className="ui main text container">
             <div className="ui header large">
@@ -34,6 +35,11 @@ class PostNew extends Component {
                      {title.touched ? title.error : ''}
                   </div>
                </div>
+
+               {/* <div className="field">
+                  <label htmlFor="image">Image</label>
+                  <input name="image" type="text" {...image}/>
+               </div> */}
 
                <div className={`field ${categories.touched && categories.invalid ? 'ui red message' : ''}`}>
                   <label htmlFor="category">Category</label>
@@ -70,7 +76,7 @@ function validate(values){
       errors.categories = 'Enter category, please';
    }
    if(!values.content){
-         errors.content = 'Enter text, please';
+      errors.content = 'Enter text, please';
    }
    return errors;
 }
@@ -79,6 +85,6 @@ function validate(values){
 // Decorate the form component
 export default reduxForm({
    form: 'newPost', // a unique name for this form
-   fields: ['title', 'categories', 'content'],
+   fields: ['title', 'content', 'categories', 'image'],
    validate
 }, null, { createPost })(PostNew);
