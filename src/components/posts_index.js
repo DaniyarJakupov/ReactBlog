@@ -13,18 +13,52 @@ class  PostsIndex extends  Component {
       this.props.fetchPosts();
    }
 
+   renderPosts(){
+      return this.props.posts.map((post) => {
+         console.log(post)
+         return (
+            <div className="item" key={post.id}>
+                 <div className="content">
+                     <span className="header">{post.title}</span>
+                     <div className="meta">
+                         <span>{post.categories}</span>
+                     </div>
+                     <div className="description">
+                         {post.content}
+                     </div>
+                     <div className="extra">
+                         <Link to={"posts/" + post.id} className="ui floated secondary basic button">
+                             Read More
+                             <i className="right chevron icon"></i>
+                         </Link>
+                     </div>
+                 </div>
+             </div>
+         );
+      });
+   }
+
    render(){
       return (
          <div  className="ui main text container">
             <div className="ui header">
-               All Posts
+               Posts
                <Link to="posts/new" className="ui right floated grey basic button">
                   New Post
                </Link>
             </div>
+            <div className="ui top attached segment">
+               <div className="ui divided items">
+                  {this.renderPosts()}
+               </div>
+            </div>
          </div>
       )
    }
+}
+
+function mapStateToProps(state){
+   return {posts: state.posts.all };
 }
 
 // Take component PostsIndex  take function mapStateToProps()
@@ -32,4 +66,4 @@ class  PostsIndex extends  Component {
 //  promote PostsIndex component to Container  (component that has state).
 // Make return values of above functions (e.g. fetchPosts) available
 // as a props in PostsIndex class.
-export default  connect(null, { fetchPosts })(PostsIndex);
+export default  connect(mapStateToProps, { fetchPosts })(PostsIndex);
