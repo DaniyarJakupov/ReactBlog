@@ -5,7 +5,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-         <div className="ui secondary pointing menu">
+         <div className="ui pointing menu">
             <div className="ui container">
                <div className="header item">
                   <i className="write icon"></i> Blog
