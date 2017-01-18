@@ -14,24 +14,28 @@ class  PostsIndex extends  Component {
    }
 
    renderPosts(){
+      console.log(this.props.posts);
       return this.props.posts.map((post) => {
-         console.log(post)
+         //console.log(post)
          return (
-            <div className="item" key={post.id}>
-                 <div className="content">
-                     <span className="header">{post.title}</span>
-                     <div className="meta">
-                         <span>{post.categories}</span>
-                     </div>
-                     <div className="description">
-                         {post.content}
-                     </div>
-                     <div className="extra">
-                         <Link to={"posts/" + post.id} className="ui floated secondary basic button">
-                             Read More
-                             <i className="right chevron icon"></i>
-                         </Link>
-                     </div>
+            <div className="item" key={post._id}>
+               <div className="image">
+                  <img src={post.image} />
+               </div>
+              <div className="content">
+                  <span className="header">{post.title}</span>
+                  <div className="meta">
+                     <span>{post.created.substring(0,10)}</span>
+                  </div>
+                  <div className="description">
+                      {post.content.substring(0, 100)}...
+                  </div>
+                  <div className="extra">
+                      <Link to={"posts/" + post._id} className="ui floated secondary basic button">
+                          Read More
+                          <i className="right chevron icon"></i>
+                      </Link>
+                  </div>
                  </div>
              </div>
          );

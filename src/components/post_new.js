@@ -9,7 +9,7 @@ class PostNew extends Component {
    };
 
    onSubmit(props){
-      //props is properties from the form, i.e. title, categories, content
+      //props is properties from the form, i.e. title, image, content
       this.props.createPost(props)
          .then(() => {
             // blog post has been created, navigate user to the index page
@@ -21,7 +21,7 @@ class PostNew extends Component {
    };
 
    render(){
-      const {fields: { title, content, categories, image }, handleSubmit } = this.props; // ES6 syntax for handleSubmit = this.props.handleSubmit
+      const {fields: { title, content, image }, handleSubmit } = this.props; // ES6 syntax for handleSubmit = this.props.handleSubmit
       return (
          <div className="ui main text container">
             <div className="ui header large">
@@ -30,28 +30,20 @@ class PostNew extends Component {
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="ui form">
                <div className={`field ${title.touched && title.invalid ? 'ui red message' : ''}`}>
                   <label htmlFor="title">Title</label>
-                  <input name="title" type="text" {...title}/>
+                  <input name="title" type="text" {...title} placeholder="Title"/>
                   <div className="error">
                      {title.touched ? title.error : ''}
                   </div>
                </div>
 
-               {/* <div className="field">
+               <div className="field">
                   <label htmlFor="image">Image</label>
-                  <input name="image" type="text" {...image}/>
-               </div> */}
-
-               <div className={`field ${categories.touched && categories.invalid ? 'ui red message' : ''}`}>
-                  <label htmlFor="category">Category</label>
-                  <input name="category" type="text" {...categories}/>
-                  <div className="error">
-                     {categories.touched ? categories.error : ''}
-                  </div>
+                  <input name="image" type="text" {...image} placeholder="Image URL"/>
                </div>
 
                <div className={`field ${content.touched && content.invalid ? 'ui red message' : ''}`}>
                   <label htmlFor="content">Text</label>
-                  <textarea name="content" {...content}/>
+                  <textarea name="content" {...content} placeholder="Text"/>
                   <div className="error">
                      {content.touched ? content.error : ''}
                   </div>
@@ -72,9 +64,6 @@ function validate(values){
    if(!values.title){
       errors.title = 'Enter title, please';
    }
-   if(!values.categories){
-      errors.categories = 'Enter category, please';
-   }
    if(!values.content){
       errors.content = 'Enter text, please';
    }
@@ -85,6 +74,6 @@ function validate(values){
 // Decorate the form component
 export default reduxForm({
    form: 'newPost', // a unique name for this form
-   fields: ['title', 'content', 'categories', 'image'],
+   fields: ['title', 'content', 'image'],
    validate
 }, null, { createPost })(PostNew);
