@@ -3,12 +3,12 @@ import axios from 'axios'; // library for ajax request
 export const FETCH_POSTS =  "FETCH_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const FETCH_POST = "FETCH_POST";
-
-const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
-const API_KEY = "?key=heroofages";
+//
+const root_url = 'https://blogappv2.herokuapp.com/posts';
+//const local = 'http://localhost:3000/posts'
 
 export function fetchPosts(){
-   const url = `${ROOT_URL}/posts${API_KEY}`;
+   const url = root_url;//`${ROOT_URL}/posts${API_KEY}`;//root_url;
    const request = axios.get(url); // returns promise
    return {
       type: FETCH_POSTS,
@@ -21,7 +21,7 @@ export function fetchPosts(){
 }
 
 export function createPost(props){
-   const url = `${ROOT_URL}/posts${API_KEY}`;
+   const url = root_url;//`${ROOT_URL}/posts${API_KEY}`;//root_url;
    const request = axios.post(url, props);
    return {
       type: CREATE_POST,
@@ -30,7 +30,7 @@ export function createPost(props){
 }
 
 export function fetchPost(id){
-   const url = `${ROOT_URL}/posts/${id}${API_KEY}`;
+   const url = `${root_url}/posts/${id}`; //`${ROOT_URL}/posts/${id}${API_KEY}`;//`${root_url}/posts/${id}`;
    const request = axios.get(url); // returns promise
    return {
       type: FETCH_POST,
