@@ -3,6 +3,7 @@ import axios from 'axios'; // library for ajax request
 export const FETCH_POSTS =  "FETCH_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const FETCH_POST = "FETCH_POST";
+export const DELETE_POST = "DELETE_POST";
 //
 const root_url = 'https://blogappv2.herokuapp.com/posts';
 //const local = 'http://localhost:3000/posts'
@@ -34,6 +35,15 @@ export function fetchPost(id){
    const request = axios.get(url); // returns promise
    return {
       type: FETCH_POST,
+      payload: request
+   }
+}
+
+export function deletePost(id){
+   const url = `${root_url}/${id}`;
+   const request = axios.delete(url); // returns promise
+   return {
+      type: DELETE_POST,
       payload: request
    }
 }
