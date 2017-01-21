@@ -30,7 +30,7 @@ export function createPost(props){
 }
 
 export function fetchPost(id){
-   const url = `${root_url}/posts/${id}`; //`${ROOT_URL}/posts/${id}${API_KEY}`;//`${root_url}/posts/${id}`;
+   const url = `${root_url}/${id}`; //`${ROOT_URL}/posts/${id}${API_KEY}`;//`${root_url}/posts/${id}`;
    const request = axios.get(url); // returns promise
    return {
       type: FETCH_POST,

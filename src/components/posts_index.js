@@ -8,13 +8,13 @@ class  PostsIndex extends  Component {
    // Life cycle method that React will call automatically
    // whenever component is about to be rendered for the first time
    componentWillMount() {
-      console.log("time to call action creator to fetch posts");
+      //console.log("time to call action creator to fetch posts");
       // action creator call
       this.props.fetchPosts();
    }
 
    renderPosts(){
-      console.log(this.props.posts);
+      //console.log(this.props.posts);
       return this.props.posts.map((post) => {
          //console.log(post)
          return (
