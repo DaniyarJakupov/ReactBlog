@@ -2,9 +2,9 @@
 <table>
 <tr>
 <td>
-   Simple blog app. The main reason for building it is to practice more with react+redux ecosystem. 
-   I learn a lot while working on this porject. Backend is powered by expressjs. For now you can create and delete posts. 
-   There are also plans to implement the ability to edit posts as well as to add authentication. 
+   SPA blog app. The main reason for building it was to practice more with react+redux ecosystem.
+   I learned a lot while working on this project. Backend is powered by expressjs. For now you can create and delete posts.
+   There are also plans to implement the ability to edit posts as well as to add authentication.
 </tr>
 </table>
 
@@ -21,7 +21,7 @@ The web app is responsive.
 - [Redux](http://mongoosejs.com/docs/guide.html) - a predictable state container for JavaScript apps.
 - [Axios](https://github.com/mzabriskie/axios) - promise based HTTP client for the browser and node.js.
 - [Semantic-UI](https://semantic-ui.com/) - framework that helps create responsive layouts using human-friendly HTML.
-- and a bunch of other frontend dev tools.
+- and a ton of other cool frontend dev tools.
 
 
 ## Acknowledgments
